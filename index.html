@@ -1,40 +1,413 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo UIkit</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desarrollo de la Inteligencia Artificial — Demo UIkit Avanzado</title>
+  <meta name="description" content="Página demostrativa sobre el desarrollo de la Inteligencia Artificial. Diseño avanzado con UIkit.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/js/uikit-icons.min.js"></script>
+  <style>
+    :root{
+      --accent: #4f46e5; /* indigo-600 */
+      --muted: #6b7280;
+    }
+    body{font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    .hero-illustration{max-width:780px;opacity:0.95}
+    .glass{background:rgba(255,255,255,0.55);backdrop-filter: blur(6px);-webkit-backdrop-filter: blur(6px);}
+    pre.code-sample{background:#0b1220;color:#e6f2ff;padding:1rem;border-radius:8px;overflow:auto}
+    footer{font-size:0.9rem;color:var(--muted)}
+  </style>
 </head>
 <body>
+  <!-- NAVBAR -->
+  <nav class="uk-navbar-container uk-navbar-transparent uk-padding-small" uk-navbar>
+    <div class="uk-navbar-left uk-visible@m">
+      <a class="uk-navbar-item uk-logo" href="#">IA • Desarrollo</a>
+    </div>
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav uk-visible@m">
+        <li><a href="#overview">Resumen</a></li>
+        <li><a href="#timeline">Línea de tiempo</a></li>
+        <li><a href="#tech">Tecnologías</a></li>
+        <li><a href="#aplicaciones">Aplicaciones</a></li>
+        <li><a href="#ethics">Ética</a></li>
+        <li><a href="#recursos">Recursos</a></li>
+      </ul>
+      <a class="uk-navbar-toggle uk-hidden@m" uk-navbar-toggle-icon href="#mobile-nav" uk-toggle></a>
+    </div>
+  </nav>
 
-  <div class="uk-container uk-margin-large-top">
-    <h1 class="uk-heading-line uk-text-center"><span>Bienvenido a UIkit</span></h1>
-    <p class="uk-text-lead uk-text-center">Una página sencilla renderizada con UIkit</p>
-
-    <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
-      <div>
-        <div class="uk-card uk-card-default uk-card-body uk-text-center">
-          <span uk-icon="icon: cloud; ratio: 2"></span>
-          <h3>Escalable</h3>
-        </div>
-      </div>
-      <div>
-        <div class="uk-card uk-card-primary uk-card-body uk-text-center uk-light">
-          <span uk-icon="icon: lock; ratio: 2"></span>
-          <h3>Seguro</h3>
-        </div>
-      </div>
-      <div>
-        <div class="uk-card uk-card-secondary uk-card-body uk-text-center uk-light">
-          <span uk-icon="icon: code; ratio: 2"></span>
-          <h3>Ágil</h3>
-        </div>
-      </div>
+  <!-- OFFCANVAS MOBILE -->
+  <div id="mobile-nav" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+      <ul class="uk-nav uk-nav-default">
+        <li><a href="#overview" uk-toggle>Resumen</a></li>
+        <li><a href="#timeline" uk-toggle>Línea de tiempo</a></li>
+        <li><a href="#tech" uk-toggle>Tecnologías</a></li>
+        <li><a href="#aplicaciones" uk-toggle>Aplicaciones</a></li>
+        <li><a href="#ethics" uk-toggle>Ética</a></li>
+        <li><a href="#recursos" uk-toggle>Recursos</a></li>
+      </ul>
     </div>
   </div>
 
+  <!-- HERO -->
+  <header class="uk-section uk-section-large uk-padding-remove-vertical">
+    <div class="uk-container">
+      <div class="uk-grid-large uk-flex-middle" uk-grid>
+        <div class="uk-width-2-5@m">
+          <h1 class="uk-heading-large">El Desarrollo de la <span style="color:var(--accent)">Inteligencia Artificial</span></h1>
+          <p class="uk-text-lead">Una guía interactiva y moderna que recorre la historia, tecnologías, aplicaciones y retos éticos de la IA. Implementada con <strong>UIkit</strong> y técnicas avanzadas de interfaz.</p>
+
+          <div class="uk-margin">
+            <a class="uk-button uk-button-primary uk-margin-small-right" href="#aplicaciones">Ver aplicaciones</a>
+            <a class="uk-button uk-button-default" href="#recursos">Recursos</a>
+          </div>
+
+          <div class="uk-grid-small uk-child-width-auto uk-margin" uk-grid>
+            <div>
+              <div uk-icon="icon: cloud; ratio: 0.9"></div>
+              <small class="uk-text-muted">Modelos, infra</small>
+            </div>
+            <div>
+              <div uk-icon="icon: database; ratio: 0.9"></div>
+              <small class="uk-text-muted">Datasets</small>
+            </div>
+            <div>
+              <div uk-icon="icon: settings; ratio: 0.9"></div>
+              <small class="uk-text-muted">MLOps</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="uk-width-3-5@m uk-text-center">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3b7b1e35d2e31b5b7c3d8a0f3f2a5d5a" alt="AI illustration" class="hero-illustration">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- OVERVIEW - CARDS WITH SCROLLSPY -->
+  <section id="overview" class="uk-section uk-section-muted">
+    <div class="uk-container">
+      <h2 class="uk-heading-small">Resumen rápido</h2>
+      <div class="uk-child-width-1-3@m uk-grid-match uk-margin" uk-grid uk-scrollspy="target: .uk-card; cls: uk-animation-slide-bottom-small; delay: 200">
+
+        <div>
+          <div class="uk-card uk-card-default uk-card-body">
+            <h3 class="uk-card-title">Historia</h3>
+            <p>Desde los inicios teóricos con Turing (1950), pasando por redes neuronales y el boom del deep learning, hasta los modelos a gran escala actuales.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="uk-card uk-card-primary uk-card-body">
+            <h3 class="uk-card-title">Modelos</h3>
+            <p>Modelos supervisados, no supervisados, RL, Transformers, LLMs y modelos multimodales.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="uk-card uk-card-default uk-card-body">
+            <h3 class="uk-card-title">Despliegue</h3>
+            <p>MLOps, infra cloud, inferencia optimizada y monitorización continua para producción segura.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline" class="uk-section uk-section-small">
+    <div class="uk-container">
+      <h2 class="uk-heading-small">Línea de tiempo</h2>
+      <ul class="uk-timeline uk-margin-large-top">
+        <li>
+          <div class="uk-timeline-icon uk-border-circle uk-flex uk-flex-center uk-flex-middle">1950</div>
+          <div class="uk-timeline-panel uk-card uk-card-default uk-card-body">
+            <h3 class="uk-margin-remove">Turing y la prueba</h3>
+            <p>Alan Turing plantea preguntas fundamentales sobre la inteligencia artificial.</p>
+          </div>
+        </li>
+        <li>
+          <div class="uk-timeline-icon uk-border-circle uk-flex uk-flex-center uk-flex-middle">1980</div>
+          <div class="uk-timeline-panel uk-card uk-card-default uk-card-body">
+            <h3 class="uk-margin-remove">Redes neuronales</h3>
+            <p>Reavivamiento de los modelos neuronales y backpropagation como método de entrenamiento.</p>
+          </div>
+        </li>
+        <li>
+          <div class="uk-timeline-icon uk-border-circle uk-flex uk-flex-center uk-flex-middle">2012</div>
+          <div class="uk-timeline-panel uk-card uk-card-default uk-card-body">
+            <h3 class="uk-margin-remove">Boom del Deep Learning</h3>
+            <p>Convolutional nets y grandes datasets impulsan avances en visión y voz.</p>
+          </div>
+        </li>
+        <li>
+          <div class="uk-timeline-icon uk-border-circle uk-flex uk-flex-center uk-flex-middle">2020+</div>
+          <div class="uk-timeline-panel uk-card uk-card-default uk-card-body">
+            <h3 class="uk-margin-remove">Modelos a gran escala</h3>
+            <p>LLMs y modelos multimodales transforman aplicaciones y herramientas de productividad.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGIES GRID -->
+  <section id="tech" class="uk-section uk-section-secondary uk-light">
+    <div class="uk-container">
+      <h2>Tecnologías y herramientas</h2>
+      <div class="uk-grid-match uk-child-width-1-3@m uk-margin" uk-grid>
+
+        <div>
+          <div class="uk-card uk-card-body glass">
+            <h3>Frameworks</h3>
+            <p>TensorFlow, PyTorch, JAX, Hugging Face Transformers.</p>
+            <ul class="uk-list uk-list-bullet">
+              <li>Entrenamiento distribuido</li>
+              <li>Compiladores (XLA, TorchScript)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="uk-card uk-card-body glass">
+            <h3>Infraestructura</h3>
+            <p>GPU/TPU, Kubernetes, Docker, servicios cloud (AWS, GCP, Azure).</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="uk-card uk-card-body glass">
+            <h3>MLOps</h3>
+            <p>Versionado de datasets, CI/CD para modelos, monitorización y explainability.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS & TABS SWITCHER -->
+  <section id="aplicaciones" class="uk-section uk-section-default">
+    <div class="uk-container">
+      <h2>Aplicaciones</h2>
+
+      <ul class="uk-subnav uk-subnav-pill" uk-switcher>
+        <li><a href="#">Visión por Computadora</a></li>
+        <li><a href="#">Procesamiento de Lenguaje</a></li>
+        <li><a href="#">Robótica y Control</a></li>
+        <li><a href="#">Medicina</a></li>
+      </ul>
+
+      <ul class="uk-switcher uk-margin">
+        <li>
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-3@s">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=6a2b9c6af8b6f6a9e0b8f6b2a1a6c2d0" alt="vision" uk-img>
+            </div>
+            <div class="uk-width-expand">
+              <h3>Visión por Computadora</h3>
+              <p>Reconocimiento de imágenes, segmentación, visión en tiempo real para vehículos autónomos y control de calidad en manufactura.</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Procesamiento de Lenguaje Natural (NLP)</h3>
+            <p>Modelos de lenguaje (LLMs), traducción automática, resumen, chatbots y análisis de sentimiento.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Robótica y Control</h3>
+            <p>Aprendizaje por refuerzo para control complejo, simuladores y digital twins para pruebas seguras.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Medicina y Salud</h3>
+            <p>Diagnóstico asistido, segmentación médica, descubrimiento de fármacos y medicina personalizada.</p>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ETHICS - ACCORDION -->
+  <section id="ethics" class="uk-section uk-section-muted">
+    <div class="uk-container">
+      <h2>Ética, seguridad y gobernanza</h2>
+      <div uk-accordion>
+        <h3 class="uk-accordion-title">Privacidad y protección de datos</h3>
+        <div class="uk-accordion-content">
+          <p>Prácticas para anonimizar datos, cumplimiento con GDPR/LPD locales y minimización de recolección.</p>
+        </div>
+
+        <h3 class="uk-accordion-title">Bias y equidad</h3>
+        <div class="uk-accordion-content">
+          <p>Auditorías de modelos, datasets balanceados e interpretabilidad para detectar sesgos.</p>
+        </div>
+
+        <h3 class="uk-accordion-title">Seguridad y adversarial</h3>
+        <div class="uk-accordion-content">
+          <p>Técnicas para robustez, pruebas adversariales y defensa en entornos de producción.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODE SAMPLE + COPY BUTTON -->
+  <section class="uk-section uk-section-small">
+    <div class="uk-container">
+      <h2>Snippet: Entrenamiento simple con PyTorch</h2>
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-expand">
+          <pre class="code-sample" id="code">
+import torch
+import torch.nn as nn
+from torch.utils.data import DataLoader
+
+# Modelo simple
+class Net(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc = nn.Linear(784, 10)
+
+    def forward(self, x):
+        return self.fc(x)
+
+# Entrenamiento (simplificado)
+net = Net()
+optimizer = torch.optim.SGD(net.parameters(), lr=0.01)
+criterion = nn.CrossEntropyLoss()
+for epoch in range(5):
+    for X, y in DataLoader(...):
+        pred = net(X)
+        loss = criterion(pred, y)
+        loss.backward()
+        optimizer.step()
+        optimizer.zero_grad()
+          </pre>
+        </div>
+        <div class="uk-width-auto@s">
+          <button class="uk-button uk-button-secondary" id="copyBtn" uk-tooltip="title: Copiar snippet">Copiar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="uk-section uk-section-default uk-padding-large">
+    <div class="uk-container">
+      <h2>Galería</h2>
+      <div class="uk-child-width-1-3@m uk-grid-small" uk-grid>
+        <div>
+          <a href="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1" uk-lightbox>
+            <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=1" alt="dataset">
+          </a>
+        </div>
+        <div>
+          <a href="#" uk-lightbox>
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=2" alt="model">
+          </a>
+        </div>
+        <div>
+          <a href="#" uk-lightbox>
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3" alt="robotics">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES AND LINKS -->
+  <section id="recursos" class="uk-section uk-section-secondary uk-light">
+    <div class="uk-container">
+      <h2>Recursos útiles</h2>
+      <div class="uk-grid-small uk-child-width-1-3@m" uk-grid>
+        <div>
+          <div class="uk-card uk-card-body">
+            <h4>Artículos</h4>
+            <ul class="uk-list">
+              <li><a href="#">Papers clásicos y recientes</a></li>
+              <li><a href="#">Blogs técnicos</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="uk-card uk-card-body">
+            <h4>Repositorios</h4>
+            <ul class="uk-list">
+              <li><a href="#">GitHub: ejemplos y libs</a></li>
+              <li><a href="#">Datasets públicos</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="uk-card uk-card-body">
+            <h4>Comunidades</h4>
+            <p>Foros, Slack/Discord, meetups y conferencias.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT + FOOTER -->
+  <footer class="uk-section uk-section-small uk-section-muted">
+    <div class="uk-container">
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-expand">
+          <h4>Contacto</h4>
+          <p class="uk-text-small">¿Quieres que adapte esta página a tu proyecto, o que genere un repositorio listo para producción? Escribe.</p>
+        </div>
+        <div class="uk-width-auto">
+          <a class="uk-button uk-button-text" href="#">Términos</a>
+          <a class="uk-button uk-button-text" href="#">Privacidad</a>
+        </div>
+      </div>
+      <div class="uk-margin-top">
+        <p>&copy; 2025 — Desarrollo IA. Hecho con UIkit.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Copy code snippet
+    document.getElementById('copyBtn').addEventListener('click', async function(){
+      const text = document.getElementById('code').innerText;
+      try{
+        await navigator.clipboard.writeText(text);
+        UIkit.notification({message: 'Snippet copiado al portapapeles', status: 'success'});
+      }catch(e){
+        UIkit.notification({message: 'No se pudo copiar. Selecciona manualmente.', status: 'danger'});
+      }
+    });
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+
+    // Example: Toggle theme (light/dark)
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if(prefersDark){
+      document.documentElement.style.background = '#0b0f1a';
+      document.documentElement.style.color = '#e6eef8';
+    }
+  </script>
 </body>
 </html>
