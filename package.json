@@ -1,7 +1,7 @@
 {
-  "name": "uikit-demo",
+  "name": "render-uikit-demo",
   "version": "1.0.0",
-  "description": "Demo UIkit en Render",
+  "description": "Demo de UIkit desplegada en Render",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
